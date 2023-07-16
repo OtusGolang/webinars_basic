@@ -269,8 +269,16 @@ table img {
   margin-bottom: initial;
 }
 
+.onefour-image img {
+  width: 25%
+}
+
 .half-image img {
   width: 50%
+}
+
+.threefour-image img {
+  width: 75%
 }
 
 .full-image img {
