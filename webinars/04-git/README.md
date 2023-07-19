@@ -210,6 +210,14 @@ https://git-scm.com/
 
 ---
 
+# Pull Requests
+
+.center-image.threefour-image[
+![](img/pr.png)
+]
+
+---
+
 # GitHub Actions
 
 .center-image.threefour-image[
