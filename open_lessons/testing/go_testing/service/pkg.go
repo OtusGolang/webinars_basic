@@ -8,20 +8,24 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/OtusTeam/Go-Basic/open_lessons/go_testing/storage"
 )
 
 type Storage interface {
-	Save(uint32) error
-	Get(uint32) (uint32, error)
-	GetAll() (map[uint32]uint32, error)
+	Save(candidateID uint32)
+	GetByCandidateID(candidateID uint32) uint32
+	GetStats() map[uint32]uint32
 }
 
 type Service struct {
 	storage Storage
 }
 
-func NewService(storage Storage) *Service {
-	return &Service{storage: storage}
+func NewService() *Service {
+	return &Service{
+		storage: storage.New(),
+	}
 }
 
 func (s *Service) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -87,12 +91,7 @@ func (s *Service) GetStats(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		stat, err := s.storage.Get(uint32(candidateId))
-		if err != nil {
-			writeErr(w, http.StatusInternalServerError, "failed to process")
-
-			return
-		}
+		stat := s.storage.GetByCandidateID(uint32(candidateId))
 
 		resp := StatCandidateResponse{
 			CandidateId: uint32(candidateId),
@@ -105,12 +104,7 @@ func (s *Service) GetStats(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	stats, err := s.storage.GetAll()
-	if err != nil {
-		writeErr(w, http.StatusInternalServerError, "failed to process")
-
-		return
-	}
+	stats := s.storage.GetStats()
 
 	resp := StatResponse{
 		Records: stats,
