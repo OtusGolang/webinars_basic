@@ -198,12 +198,6 @@ $ tree -d -L 1 /path/your/go/projects
 
 ---
 
-# Playground
-
-https://go.dev/play/p/UCPdVNrl0-P
-
----
-
 # Git
 
 Git — распределённая система контроля версий, которая даёт возможность разработчикам отслеживать изменения в файлах и работать над одним проектом совместно с коллегами. 
@@ -214,13 +208,20 @@ GitHub — сервис онлайн-хостинга репозиториев, 
 
 ---
 
-# Git
+# Домашние задания
 
-Ваши домашние задания лежат [здесь](https://github.com/OtusGolang/home_work_basic)
-Гайд по сдаче [здесь](https://github.com/OtusGolang/home_work_basic). Он пригодится вам позже
+Ваши домашние задания лежат [здесь](https://github.com/OtusGolang/home_work_basic)</br>
+Гайд по сдаче [здесь](https://github.com/OtusGolang/home_work/wiki#%D0%A1%D1%82%D1%83%D0%B4%D0%B5%D0%BD%D1%82%D0%B0%D0%BC). Он пригодится вам позже
 
 ---
 
+# Hello Playground!
+
+### Давайте напишем классический Hello World
+
+https://go.dev/play/p/UCPdVNrl0-P
+
+---
 
 background-image: url(../img/questions.svg)
 
