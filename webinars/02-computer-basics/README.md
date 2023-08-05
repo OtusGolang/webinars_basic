@@ -360,6 +360,7 @@ https://i2hard.ru/publications/24825
 - https://intuit.ru/studies/courses/3481/723/lecture/14244?page=2
 - https://i2hard.ru/publications/24825
 - https://prog-cpp.ru/micro-interrupts/
+- https://pyatilistnik.org/difference-between-physical-cores-and-logical-processors/
 
 ---
 
