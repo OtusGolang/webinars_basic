@@ -1,11 +1,11 @@
-background-image: url(../../img/title.svg)
+background-image: url(../img/title.svg)
 
 ---
 
-background-image: url(../../img/rec.svg)
+background-image: url(../img/rec.svg)
 
 ---
-background-image: url(../../img/topic.svg)
+background-image: url(../img/topic.svg)
 
 .topic[Интерфейсы и утверждение типов]
 .tutor[Алексей Романовский]
@@ -13,7 +13,7 @@ background-image: url(../../img/topic.svg)
 
 ---
 
-background-image: url(../../img/rules.svg)
+background-image: url(../img/rules.svg)
 
 ---
 
@@ -281,7 +281,7 @@ _если возможно_
 ### Ссылки:
 * https://go-proverbs.github.io/
 
-
+---
 
 # Интерфейсы: type assertion
 
@@ -314,7 +314,7 @@ _если возможно_
 
 <br>
 
-https://goplay.tools/snippet/x-NbzVMZMUp
+### Пример: https://goplay.tools/snippet/x-NbzVMZMUp
 
 <br>
 
@@ -392,20 +392,22 @@ default:
 
 ---
 
-background-image: url(../../img/questions.svg)
+background-image: url(../img/questions.svg)
 
 ---
 
-background-image: url(../../img/poll.svg)
+background-image: url(../img/poll.svg)
 
 ---
 
-background-image: url(../../img/next_webinar.svg)
-.announce_date[1 января]
-.announce_topic[Тема следующего вебинара]
+background-image: url(../img/next_webinar.svg)
+.announce_date[6 Сентября]
+.announce_topic[Обработка ошибок и паник]
 
 ---
-background-image: url(../../img/thanks.svg)
+background-image: url(../img/thanks.svg)
 
-.tutor[Лектор]
-.tutor_desc[Должность]
+.announce_date[Ссылка на опрос:]
+.announce_topic[https://otus.ru/polls/70297/]
+.tutor[Алексей Романовский]
+.tutor_desc[Преподаватель]
