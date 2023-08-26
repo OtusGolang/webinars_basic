@@ -1,50 +1,32 @@
-.center.icon[![otus main](img/main.png)]
+background-image: url(../img/title.svg)
 
 ---
 
+background-image: url(../img/rec.svg)
 
-class: white
-background-image: url(img/message.svg)
-.top.icon[![otus main](img/logo.png)]
+---
+background-image: url(../img/topic.svg)
 
-# Структуры в Go
-
-### Илья Феоктистов
+.topic[Пользовательские типы данных]
+.tutor[Илья Феоктистов]
+.tutor_desc[Software Engineer at Agoda]
 
 ---
 
-class: top white
-background-image: url(img/sound.svg)
-background-size: 130%
-.top.icon[![otus main](img/logo.png)]
-
-.sound-top[
-  # Как меня слышно и видно?
-]
-
-.sound-bottom[
-  ## > Напишите в чат
-  ### **+** если все хорошо
-  ### **-** если есть проблемы cо звуком или с видео
-  ### !проверить запись!
-]
+background-image: url(../img/rules.svg)
 
 ---
-<!--
-# Небольшой тест
 
-.left-text[
-Пожалуйста, пройдите небольшой тест. 
-<br><br>
-Возможно вы уже многое знаете про структуры в Go =)
-<br><br>
-[https://forms.gle/xLLab1NXH9NLKJij8](https://forms.gle/xLLab1NXH9NLKJij8)
-]
+# О чем будем говорить
 
-.right-image[
-![](img/gopher9.png)
-]-->
+- Go SDK
+- Компиляция и кросс-компиляция
+- Пакеты и модули в Go
+- Организация проекта
+- Форматирование и линтинг кода
+- Спецификация Go
 
+---
 
 # Структуры
 
