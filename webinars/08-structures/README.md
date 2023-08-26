@@ -140,80 +140,6 @@ https://en.wikipedia.org/wiki/Data_structure_alignment
 
 ---
 
-# Указатели
-
-Указатель - это адрес некоторого значения в памяти. <br>
-Указатели строго типизированы. <br>
-Zero Value для указателя - nil.
-
-```
-x := 1         // Тип int
-xPtr := &x     // Тип *int
-var p *int     // Тип *int, значение nil
-```
-
-https://goplay.space/#s-LG0fjQxmV
-
----
-
-# Получение адреса
-
-Можно получать адрес не только переменной, но и поля структуры или элемента массива или слайса. <br>
-Получение адреса осуществляется с помощью оператора `&`.
-```
-var x struct {
-    a int
-    b string
-    c [10]rune
-}
-bPtr := &x.b
-c3Ptr := &x.c[2]
-```
-
-Но не значения в словаре!
-```
-dict := map[string]string{"a": "b"}
-valPtr := &dict["a"]  // Не скомпилируется
-```
-https://github.com/golang/go/issues/11865
-<br><br>
-
-Также нельзя (и не нужно) получать указатель на функцию.
-
-<br>
-https://goplay.space/#5N5WqdIZVDS
-
----
-
-# Разыменование указателей
-
-Разыменование осуществляется с помощью оператора `*`:
-```
-a := "qwe"  // Тип string
-aPtr := &a  // Тип *string
-b := *aPtr  // Тип string, значение "qwe"
-
-var n *int  // nil
-nv := *n    // panic
-```
-
-В случае указателей на *структуры* вы можете обращаться к полям структуры без разыменования:
-```
-p := struct{x, y int }{1, 3}
-pPtr := &p
-fmt.Println(pPtr.x) // (*pPtr).x
-fmt.Println((*pPtr).y)
-
-pPtr = nil
-fmt.Println(pPtr.x) // ?
-```
-
-https://goplay.space/#q3UDXozLcX9
-<br>
-https://golang.org/ref/spec#Selectors
-
----
-
 
 # Копирование указателей и структур
 
@@ -239,64 +165,6 @@ b := a
 *a.x = 1
 fmt.Println(b.x) // ?
 ```
-
----
-
-# Определение методов 
-
-В Go можно определять методы у именованых типов (кроме интерфейсов)
-
-```
-type User struct {
-    Id      int64
-    Name    string
-    Age     int
-    friends []int64
-}
-
-func (u User) IsOk() bool {
-    for _, fid := range u.friends {
-        if u.Id == fid {
-            return true
-        }
-    }
-    return false
-}
-
-var u User
-fmt.Println(u.IsOk()) // (User).IsOk(u)
-```
-
-https://golang.org/ref/spec#Method_declarations
-<br>
-https://goplay.space/#pp4iiJoQ8sO
-
----
-
-# Методы типа и указателя на тип
-
-Методы объявленные над типом получают копию объекта, поэтому не могут его изменять!
-```
-func (u User) HappyBirthday() {
-  u.Age++ // Это изменение будет потеряно
-}
-```
-
-Методы объявленные над указателем на тип - могут.
-```
-func (u *User) HappyBirthday() {
-  u.Age++ // OK
-}
-```
-
-https://goplay.space/#XP7fc8wxQ3P
-<br><br>
-
-Метод типа можно вызывать у значения и у указателя. <br>
-Метод указателя можно вызывать у указателя и у значения, если оно адресуемо.
-
-<br>
-https://github.com/golang/go/wiki/CodeReviewComments#receiver-type
 
 ---
 
@@ -367,21 +235,6 @@ func (r *RateLimiter) Allow() bool {
 
 ---
 
-# Задачка
-
-.left-code[
-Реализовать тип `IntStack`, который содержит стэк целых чисел. 
-У него должны быть методы `Push(i int)` и `Pop() int`.
-
-<br><br>
-https://goplay.space/#xhAGg8vtX8N
-]
-
-.right-image[
-![](img/gopher9.png)
-]
-
----
 
 # Встроенные структуры
 
@@ -547,20 +400,6 @@ ch <- struct{}{}
 .right-image[
 ![](img/gopher9.png)
 ]-->
-
----
-
-# Опрос
-
-.left-text[
-Заполните пожалуйста опрос
-<br><br>
-https://otus.ru/polls/22830/
-]
-
-.right-image[
-![](img/gopher7.png)
-]
 
 ---
 
