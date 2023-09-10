@@ -60,10 +60,29 @@ background-image: url(../img/rules.svg)
 # Декомпозиция кода
 
 Мы проектируем код, разбивая его на маленькие части: ..., слои, пакеты, функции, ... 
+
+
 Тестирование должно быть встроено в этот процесс.
 
+<br>
 * какие тесты покроют эту часть кода?
 * как изменить декомпозицию, чтобы использовать более дешёвый вид тестирования для данного модуля?
+
+
+---
+# Какие тесты писать, как их придумывать?
+
+* Позитивный сценарий
+    * убедитесь что компонент работает в случае, когда получил корректные и наиболее типичные данные.
+    * в том числе, при вызове из разных потоков
+* Негативный сценарий
+    * Проверьте что неверные денные вызывают ошибку и не приводят к нежелательным последствиям (таких как запись в бд, отправка их дальше)
+* Граничные случаи
+    * Самое большое/маленькое/длинное/короткое/**пустое** значение аргументов
+    * границы, на которых меняется поведение
+* "А что если..."
+    * кейсы, которые могут появиться в будущем
+    * неожиданные данные, о которых вы знаете как автор кода, но обычно их слать не должны
 
 
 ---
@@ -84,7 +103,12 @@ func TestIndex(t *testing.T) { // <-- Test...(t *testing.T)
 }
 ```
 
-https://goplay.tools/snippet/yybc8Np1JjK
+### Пример: https://goplay.space/#yybc8Np1JjK
+
+### Ссылки:
+* https://pkg.go.dev/testing
+* https://gobyexample.com/testing-and-benchmarking
+
 
 ---
 
@@ -106,8 +130,10 @@ func TestAtoi(t *testing.T) {
 }
 ```
 
-https://goplay.tools/snippet/vjAsrBrQrxu
+### Пример: https://goplay.space/#vjAsrBrQrxu
 
+### Ссылки:
+* https://pkg.go.dev/testing#T
 
 ---
 
@@ -135,7 +161,8 @@ https://goplay.tools/snippet/vjAsrBrQrxu
 * ### Придумать один новый тест.
 * ### Не закрывайте playground — еще пригодится :)
 
-https://goplay.tools/snippet/PQCd4_FqLeZ
+<br>
+### Код: https://goplay.space/#PQCd4_FqLeZ
 
 ---
 
@@ -172,6 +199,7 @@ func TestJson(t *testing.T) {
 * очень много разных assert'ов, выбырайте как можно более конкретный
     * assert.True(t, result.A == "hello") // плохо
     * assert.Equal(t, result.A, "hello") // хорошо
+    * assert.Contains(t, err.Error(), "not found") // плохо
     * assert.ErrorIs(t, err, ErrNotFound) // хорошо
 * доп. сообщения: что/зачем проверяем
     * ожидаемое/фактическое значение обычно есть и так
@@ -192,9 +220,10 @@ func TestJson(t *testing.T) {
 
 * vscode snippet: tdt
 
-```
+```go
 func TestParseInt(t *testing.T) {
 	tests := []struct {
+        // name  string
 		str      string
 		expected int64
 	}{
@@ -214,9 +243,7 @@ func TestParseInt(t *testing.T) {
 }
 ```
 
-https://goplay.tools/snippet/R9YMRmsM2h3 (IDE)
-
-https://goplay.tools/snippet/v-_TxOG6isX (Playground)
+### Задание: https://goplay.space/#R9YMRmsM2h3 ([failback](https://goplay.space/#v-_TxOG6isX))
 
 ---
 
