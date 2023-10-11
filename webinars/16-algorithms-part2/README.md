@@ -281,12 +281,245 @@ func (s *Set) Contains(item int) bool {
 
 ---
 # Множество
+Улучшенная операция пересечения
+
+```go
+func (s *Set) Intersect(other *Set) *Set {
+	result := NewSet()
+	var smaller, larger *Set
+
+	// Определяем множество меньшего размера
+	if len(s.data) < len(other.data) {
+		smaller = s
+		larger = other
+	} else {
+		smaller = other
+		larger = s
+	}
+
+	for item := range smaller.data {
+		if larger.Contains(item) {
+			result.Append(item)
+		}
+	}
+	return result
+}
+```
+
+Теперь сложность: O(min(N,M)) ~= O(N)
+
+Потребление памяти не изменилось: O(min(N,M))
+
+---
+# Множество
 
 Операция вычитания:
 
+.center-image[
+![](img/set_sub.png)
+]
+
+---
+# Множество
+
+Операция вычитания:
+
+```go
+
+func (s *Set) Sub(other *Set) *Set {
+    result := NewSet()
+    for item := range s.data {
+        if !other.Contains(item) {
+            result.Add(item)
+		}
+    }
+    return result
+}
+```
+
+Что будет со сложностью?
+А сколько доп-памяти потребуется?
+
+---
+# Множество
+
+Полная версия кода:
+
+https://go.dev/play/p/ihOzLkvHUbD
+
+---
+# Множество
+
+Итоги:
+* Операция добавления - O(1)
+* Операция объединения - O(N+M) ~= O(N)
+* Операция пересечения - O(min(N,M)), Память: O(min(N,M))
+* Операция вычитания - O(M), Память: O(N-M)
+
+---
+# Бинарное Дерево
+
+Бинарное дерево - это
+иерархическая структура данных, в которой каждый узел
+имеет не более двух потомков(детей).
+Как правило, первый называется родительским узлом,
+а дети называются левым и правым наследниками.
+Дерево является частным случаем графа.
+
+.center-image[
+![](img/bin_tree.png)
+]
+
+---
+# Бинарное Дерево
+
+Описание структуры:
+
+```go
+type TreeNode struct {
+	Value int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+type BinaryTree struct {
+	Root *TreeNode
+}
+```
+
+---
+# Бинарное Дерево
+
+Операция поиска:
+```go
+// Метод для поиска значения в бинарном дереве
+func (bt *BinaryTree) Search(value int) bool {
+	currentNode := bt.Root
+	for currentNode != nil {
+		if value == currentNode.Value {
+			return true
+		} else if value < currentNode.Value {
+			currentNode = currentNode.Left
+		} else {
+			currentNode = currentNode.Right
+		}
+	}
+	return false
+}
+```
+
+---
+# Бинарное Дерево
+
+Операция вставки:
+```go
+func (bt *BinaryTree) Insert(value int) {
+    newNode := &TreeNode{Value: value}
+    if bt.Root == nil {
+        bt.Root = newNode
+        return
+    }
+    currentNode := bt.Root
+    for {
+        if value < currentNode.Value {
+            if currentNode.Left == nil {
+                currentNode.Left = newNode
+                return
+            }
+            currentNode = currentNode.Left
+        } else {
+            if currentNode.Right == nil {
+                currentNode.Right = newNode
+                return
+            }
+            currentNode = currentNode.Right
+        }
+    }
+}
+```
+
+---
+# Бинарное Дерево
+
+Получение отсортированного по возрастанию массива:
+
+```go
+// Метод для обхода дерева в порядке "in-order"
+func (bt *BinaryTree) ToSortedSlice() []int {
+	stack := []*TreeNode{}
+	currentNode := bt.Root
+	var restult []int
+
+	for currentNode != nil || len(stack) > 0 {
+		for currentNode != nil {
+			stack = append(stack, currentNode)
+			currentNode = currentNode.Left
+		}
+		currentNode = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		restult = append(restult, currentNode.Value)
+		currentNode = currentNode.Right
+	}
+	return restult
+}
+```
+
+---
+# Бинарное Дерево
+
+Полная версия кода:
+https://go.dev/play/p/yG2f0O0CY0F
+
+---
+# Несбалансированное бинарное дерево
+
+Проблема несбалансированного дерева:
+
+.center-image[
+![](img/bin_tree_unbalanced.png)
+]
+
+---
+# Несбалансированное бинарное дерево
+
+Поиск в таком дереве по эффективности не будет отличаться от поиска в связном списке.
+
+То есть по сложности он составит O(N).
+---
+# Несбалансированное бинарное дерево
+
+Есть специальные виды деревьев, которые умеют поддерживать сбалансированные состояния:
+* Красно-черное дерево: https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE-%D1%87%D1%91%D1%80%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE
+* AVL-дерево: https://ru.wikipedia.org/wiki/%D0%90%D0%92%D0%9B-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE
+
+---
+# Дерево
+Итого:
+* Вставка элемента при сбалансированности: O(log N) 
+* Поиск элемента при сбалансированности: O(log N)
+* Получение отсортированного массива: O(N)
+* Так же присутствует возможность искать по диапазонам значений за O(log N) при сбалансированности
+
+---
+# Бинарный поиск
+
+Этот алгоритм позволяет найти элемент в отсортированном массиве за O(log N). 
+Будет в домашнем задании.
+.center-image[
+![](img/sorted_arr.png)
+]
+
 ---
 
-множество, дерево (в т.ч. бинарное), граф
+# Бинарный поиск
+
+.center-image[
+![](img/bin_search.png)
+]
+
+---
+
+# Граф
 
 ---
 
