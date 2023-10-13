@@ -350,7 +350,7 @@ func (s *Set) Sub(other *Set) *Set {
 
 Полная версия кода:
 
-https://go.dev/play/p/ihOzLkvHUbD
+https://go.dev/play/p/n5WvD48cnTP
 
 ---
 # Множество
