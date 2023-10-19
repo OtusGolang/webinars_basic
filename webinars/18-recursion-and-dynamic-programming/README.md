@@ -262,7 +262,61 @@ https://go.dev/play/p/ka79Y5H4kdk
 ```
 
 ---
-# Динамическое программирование: максимальная выгода
+# Динамическое программирование: Лестница
+
+Решение задачи:
+
+```go
+func climbStairs(n int) int {
+	if n < 3 {
+		return n
+	}
+	steps := make([]int, n+1)
+	steps[1] = 1
+	steps[2] = 2
+	for i := 3; i < len(steps); i++ {
+		steps[i] = steps[i-1] + steps[i-2]
+	}
+	return steps[n]
+}
+```
+Что с памятью и сложностью?
+
+---
+# Динамическое программирование: Лестница
+
+Полная версия кода:
+https://go.dev/play/p/2_5_oxzaReC
+
+Можно ли улучшить память?
+
+---
+# Динамическое программирование: Лестница
+
+Улучшить потребление памяти можно:
+
+```go
+func climbStairs(n int) int {
+    if n < 3 {
+        return n
+    }
+
+    prePrev := 1
+    prev := 2
+
+    for i := 3; i <= n; i++ {
+        curr := prePrev + prev
+        prePrev = prev
+        prev = curr
+    }
+
+    return prev
+}
+```
+https://go.dev/play/p/B_n79TFb9ke
+
+---
+# Динамическое программирование: max profit
 
 ```go
 func maxProfit(prices []int) int {
