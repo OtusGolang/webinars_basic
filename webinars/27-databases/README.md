@@ -225,8 +225,9 @@ CREATE TABLE users (
    id INT PRIMARY KEY,
    name VARCHAR(255),
    email VARCHAR(255),
-   is_blocked BOOLEAN,
-   created_at TIMESTAMP 
+
+   is_blocked BOOLEAN NOT NULL DEFAULT false,
+   created_at TIMESTAMP NOT NULL default now()
 );
 
 ```
@@ -371,31 +372,72 @@ SELECT * FROM users ORDER BY created_at DESC LIMIT 5
 Использование ASC или значения по умолчанию вернет их по возрастанию, соответственно.
 
 ---
-# SQL (DML)
+# Вставка (DML)
+
+Добавление нового пользователя
+
+```sql
+INSERT INTO users (id, name, email) VALUES (1, 'John Doe', 'john@example.com');
+```
+
+---
+# Вставка (DML)
+
+```sql
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(255) NOT NULL,
+   email VARCHAR(255)
+);
+```
+
+Если `id` при вставке может сгенерить сама БД (к примеру имеет тип SERIAL), то при инсерте его можно опустить.
+
+```sql
+INSERT INTO users (name) VALUES ('John Doe');
+```
+В этом примере мы опустили и `email`, поскольку NULL для него - допустимый тип. 
+А вот `name` мы опустить не можем из за модификатора `NOT NULL`.
+
+---
+# Обновление (DML)
+
+Обновление данных пользователя:
+```sql
+UPDATE users SET email = 'newemail@example.com' WHERE id = 1;
+```
+Обратите внимание, что нужно обязательно нужно написать `WHERE`, иначе
+email будет обновлен абсолютно для всех пользователей.
+
+---
+# Удаление (DML)
+
+Удаление пользователя:
+
+```sql
+DELETE FROM users WHERE id = 1;
+```
+
+Тут аналогично, если не укажем `WHERE`, то мы удалим всех пользователей.
+
+---
+# Агрегация
+
 
 ---
 
-Написание SQL запросов
-Для работы с данными в реляционных базах данных используется SQL (Structured Query Language). SQL позволяет выполнять различные операции над данными, такие как выборка (SELECT), вставка (INSERT), обновление (UPDATE) и удаление (DELETE). Вот примеры SQL-запросов:
 
-sql
-Copy code
--- Выборка всех пользователей
-SELECT * FROM users;
+С помощью такой агрегационной функции `count` можно узнать общее число пользователей в БД.
+```sql
+SELECT count(*) FROM users;
+```
 
--- Вставка нового пользователя
-INSERT INTO users (id, name, email) VALUES (1, 'John Doe', 'john@example.com');
+---
 
--- Обновление данных пользователя
-UPDATE users SET email = 'newemail@example.com' WHERE id = 1;
+```sql
+SELECT count(*), reference FROM users GROUP BY reference;
+```
 
--- Удаление пользователя
-DELETE FROM users WHERE id = 1;
-SQL позволяет выполнять разнообразные операции для управления данными в реляционных базах данных.
-
-Помимо этого, вы можете использовать SQL для выполнения более сложных запросов, таких как объединение таблиц, агрегирование данных и многое другое, в зависимости от ваших потребностей.
-
-Это основные аспекты реляционных баз данных и их управления. Вам следует продолжить изучение SQL и более глубокие аспекты работы с конкретными СУБД, такими как MySQL, PostgreSQL, и другими, для более полного понимания их функциональности и возможностей.
 
 ---
 
