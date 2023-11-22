@@ -28,7 +28,7 @@ background-image: url(../img/rules.svg)
 
 Какие есть плюсы и минусы у этого решения?
 
--
+<br>
 
 .center-image[
 ![](img/file_storage.png)
@@ -220,6 +220,11 @@ services:
       - /data/postgres:/var/lib/postgresql/data
 
 ```
+
+---
+# Клиент для Postgres
+
+Удобный клиент с графическим интерфейсом: https://www.pgadmin.org/download/
 
 ---
 # Создание базы данных
