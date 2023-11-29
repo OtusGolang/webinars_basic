@@ -217,6 +217,8 @@ db.QueryRowContext(ctx, "select * from user order by $1 limit 3", order)
 ![](img/repeatable_read_market_2.png)
 ]
 
+
+
 ---
 # Бронирование отелей
 
@@ -236,7 +238,9 @@ db.QueryRowContext(ctx, "select * from user order by $1 limit 3", order)
 для проверки доступности этого номера на указанные даты.
 
 ```sql
-SELECT * FROM available_rooms WHERE hotel_id = 123 AND date BETWEEN '2023-01-01' AND '2023-01-05'
+SELECT * FROM available_rooms 
+WHERE hotel_id = 123 
+AND date BETWEEN '2023-01-01' AND '2023-01-05'
 ```
 
 ---
@@ -245,7 +249,9 @@ SELECT * FROM available_rooms WHERE hotel_id = 123 AND date BETWEEN '2023-01-01'
 После того как клиент видит доступные номера и выбирает один для бронирования, ваша система регистрирует бронь, используя SQL-запрос
 
 ```sql
-INSERT INTO reservations (hotel_id, room_number, guest_name, date_from, date_to) VALUES (123, 101, 'John Doe', '2023-01-01', '2023-01-05')
+INSERT INTO reservations (hotel_id, room_number, guest_name,
+                          date_from, date_to)
+VALUES (123, 101, 'John Doe', '2023-01-01', '2023-01-05')
 ```
 
 ---
@@ -301,8 +307,9 @@ INSERT INTO reservations (hotel_id, room_number, guest_name, date_from, date_to)
 * Выбор уровня изолированности зависит от требований вашего приложения и баланса между производительностью и изоляцией.
 * Более высокие уровни изолированности обеспечивают большую надежность данных, но могут снизить производительность из-за блокировок.
 
+
 ---
-# Транзакции
+# Транзакции в Go
 
 На уровне SQL для транзакций используются отдельные запросы: `BEGIN`, `COMMIT`, `ROLLBACK`.
 Уровень изоляции по умолчанию: *READ COMMITTED*
@@ -351,6 +358,14 @@ if err != nil {
 }
 
 ```
+
+---
+# Практика
+
+Возвращаемся к примеру с бронированием отелей
+
+Выполнить практическую задачу:
+https://github.com/OtusGolang/webinars_basic_practical_part/tree/master/29-databases-3/serializable_tx
 
 
 ---
