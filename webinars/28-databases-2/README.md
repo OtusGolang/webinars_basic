@@ -458,6 +458,12 @@ for rows.Next() {
   ]
 
 ---
+# Практическая часть
+
+Сделаем простую БД для студентов и их оценок.
+https://github.com/OtusGolang/webinars_basic_practical_part/tree/master/28-databases-2/student_storage
+
+---
 
 background-image: url(../img/questions.svg)
 
