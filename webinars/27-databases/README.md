@@ -519,6 +519,81 @@ GROUP BY department;
 ```
 
 ---
+# Объединение таблиц
+
+`INNER JOIN` возвращает только те строки, для которых есть совпадение в обеих таблицах. 
+Это означает, что только строки с соответствующими значениями
+в объединяющем столбце будут включены в результат.
+
+Пример:
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers
+ON orders.customer_id = customers.customer_id;
+```
+Результат будет содержать только заказы, для которых есть соответствующие клиенты.
+
+---
+# Объединение таблиц
+
+`LEFT JOIN` возвращает все строки из левой таблицы (первой таблицы в запросе) 
+и соответствующие строки из правой таблицы. 
+Если нет соответствия в правой таблице, будут возвращены NULL значения.
+
+Пример:
+```sql
+SELECT customers.customer_name, orders.order_id
+FROM customers
+LEFT JOIN orders
+ON customers.customer_id = orders.customer_id;
+```
+
+Результат содержит все клиенты, даже если у них нет заказов.
+
+---
+# Объединение таблиц
+
+`RIGHT JOIN` аналогичен LEFT JOIN, но возвращает все строки из правой таблицы и соответствующие строки из левой таблицы. 
+Если нет соответствия в левой таблице, будут возвращены NULL значения.
+
+Пример:
+
+```sql
+
+SELECT customers.customer_name, orders.order_id
+FROM customers
+RIGHT JOIN orders
+ON customers.customer_id = orders.customer_id;
+```
+
+Результат содержит все заказы, даже если у них нет клиентов.
+
+---
+# Объединение таблиц и агрегация
+
+```sql
+CREATE TABLE students (
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(255) UNIQUE
+);
+CREATE TABLE IF NOT EXISTS grades (
+  id SERIAL PRIMARY KEY,
+  student_id INT REFERENCES students(id),
+  grade FLOAT
+);
+```
+
+Получение среднего по каждому студенту:
+
+```sql
+SELECT s.id, s.name, COALESCE(AVG(g.grade), 0) AS avg_grade 
+FROM students s 
+LEFT JOIN grades g ON s.id = g.student_id 
+GROUP BY s.id, s.name
+```
+
+---
 # Итоги
 Важные моменты, которые мы рассмотрели:
 * Базы данных: Мы изучили, что такое базы данных и зачем они нужны для хранения и организации данных.
@@ -526,6 +601,7 @@ GROUP BY department;
 * Основы SQL: Изучили основные понятия SQL, такие как SELECT, INSERT, UPDATE, DELETE, и как они используются для управления данными в реляционных базах данных.
 * Создание и управление БД: Узнали, как создавать базы данных, таблицы и индексы с использованием SQL-запросов.
 * Агрегация данных: Освоили агрегатные функции SQL для вычисления сумм, средних значений и других сводных характеристик данных.
+* Объединение таблиц: Так же облегчает выполнение аналитических задач, когда данные находятся в разных таблицах.
 * Docker и PostgreSQL: Узнали, как использовать Docker для установки и запуска PostgreSQL, а также настройки контейнеров с базами данных.
 
 ---
