@@ -8,8 +8,8 @@ background-image: url(../img/rec.svg)
 background-image: url(../img/topic.svg)
 
 .topic[Основы вычислительной техники]
-.tutor[Алексей Семушкин]
-.tutor_desc[Software Engineer at Semrush]
+.tutor[Алексей Романовский]
+
 
 ---
 
@@ -171,7 +171,9 @@ background-image: url(../img/rules.svg)
 
 # Схемная реализация
 
-- https://elenergi.ru/logicheskie-elementy-i-ix-sxemnaya-realizaciya.html
+- https://electricalschool.info/electronica/1918-logicheskie-jelementy-i-ili-ne-i-ne-ili.html
+- https://www.youtube.com/watch?v=_5W_GZOPa8E
+
 
 ---
 
@@ -184,6 +186,10 @@ background-image: url(../img/rules.svg)
 .center-image.threefour-image[
     ![](img/RS.png)
 ]
+
+- https://www.youtube.com/watch?v=RKgfCaxeQwU
+- https://www.youtube.com/watch?v=qohzNcRXdbg
+
 
 ---
 
@@ -200,6 +206,8 @@ background-image: url(../img/rules.svg)
 
 - JK-триггер
 
+* https://digteh.ru/CVT/trigg/
+
 ---
 
 # Элементная база ВТ
@@ -213,6 +221,25 @@ background-image: url(../img/rules.svg)
 - Шифраторы — это комбинационные устройства, преобразующии десятичные числа в двоичную систему счисления.
 
 - Дешифраторы - выполняют обратную шифраторам функцию.
+
+---
+
+Демо: работа процессора
+
+* https://cpuvisualsimulator.github.io/
+
+```asm
+00: NOP
+02: LOD #22
+04: LOD 30
+06: ADD #45
+08: ADD 32
+```
+
+```asm
+30: 55
+32: 32767
+```
 
 ---
 
@@ -362,6 +389,14 @@ https://i2hard.ru/publications/24825
 - https://prog-cpp.ru/micro-interrupts/
 - https://pyatilistnik.org/difference-between-physical-cores-and-logical-processors/
 
+Научпоп:
+- https://www.youtube.com/watch?v=-z65gKETbf8
+- https://www.youtube.com/watch?v=-knefdASOz8
+- https://www.youtube.com/watch?v=k9wK2FThEsk
+- https://www.youtube.com/watch?v=Wh22_O8jXVQ
+- https://www.youtube.com/watch?v=MXoMuymbfo8
+- https://www.youtube.com/watch?v=qewavPO6jcA
+
 ---
 
 background-image: url(../img/questions.svg)
@@ -379,5 +414,5 @@ background-image: url(../img/next_webinar.svg)
 ---
 background-image: url(../img/thanks.svg)
 
-.tutor[Алексей Семушкин]
-.tutor_desc[Software Engineer at Semrush]
+.tutor[Алексей Романовский]
+
