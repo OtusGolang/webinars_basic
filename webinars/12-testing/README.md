@@ -279,7 +279,7 @@ go test github.com/otus/superapp/...
 Конкретные тесты по имени (regex):
 ```sh
 go test -run TestFoo
-go test -run .*Json.* 
+go test -run ".*Json.*" 
 ```
 
 По тегам (`//go:build integration`):
@@ -305,9 +305,7 @@ background-image: url(../img/questions.svg)
 background-image: url(../img/poll.svg)
 
 
-# https://otus.ru/polls/70299/
-
----
+# https://otus.ru/polls/80143/
 
 background-image: url(../img/next_webinar.svg)
 .announce_date[13 сентября]
