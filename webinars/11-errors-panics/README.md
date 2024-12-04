@@ -107,11 +107,11 @@ func (router HttpRouter) parse(reader *bufio.Reader) (Request, error) {
     return nil, err
   }
 
-  if request := router.routeRequest(requestLine); request != nil {
-    return request, nil
+  if request := router.routeRequest(requestLine); request == nil {
+    return nil, requestLine.NotImplemented()
   }
 
-  return nil, requestLine.NotImplemented()
+  return request, nil
 }
 ```
 
@@ -119,7 +119,7 @@ func (router HttpRouter) parse(reader *bufio.Reader) (Request, error) {
 
 # Ошибка - это значение
 
-С точки зрения Го, ошибки ничем не отилчаются от <br> любых других переменных и значений.
+С точки зрения Го, ошибки ничем не отличаются от <br> любых других переменных и значений.
 
 
 <br>
@@ -130,7 +130,7 @@ func (router HttpRouter) parse(reader *bufio.Reader) (Request, error) {
 
 # Не все функции возвращают ошибки одинаково
 
-Иногда, ошибки не взвразащаются, а являются частью структуры с которой мы работаем.
+Иногда, ошибки не возвращаются, а являются частью структуры с которой мы работаем.
 
 
 Мы можем сохранять её во внутренней структуре:
@@ -172,7 +172,7 @@ if err := scanner.Err(); err != nil {
 
 # Оборачивание ошибок
 
-Если ошибка не может быть обработана на текущем уровне, и мы хотим сообщить нё вызывающуму с дополнительной информацией
+Если ошибка не может быть обработана на текущем уровне, и мы хотим сообщить её вызывающему с дополнительной информацией
 
 ```go
 func ReadAndCalcLen() error {
@@ -257,7 +257,7 @@ if err == io.EOF {
 
 # Проверка ошибок: типы
 
-Пример из пакeта os:
+Пример из пакета os:
 
 ```go
 // PathError records an error and the operation and

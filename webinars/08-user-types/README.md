@@ -30,6 +30,23 @@ background-image: url(../img/rules.svg)
 * вложенные и анонимные структуры;
 
 ---
+# Объявление пользовательских типов
+```go
+type <Name> <Declaration> 
+```
+
+`Declaration` может быть, например:
+* Структурой - struct  
+* Простым типом - string, int... (называется "alias")
+* Интерфейсом - interface
+* Функцией - func
+* Коллекцией - array, slice, map
+* Каналом - chan
+
+См также:
+* https://go.dev/ref/spec#Type_declarations
+
+---
 
 # Структуры
 
@@ -37,8 +54,6 @@ background-image: url(../img/rules.svg)
 Переменные размещаются рядом в памяти и обычно используются совместно.
 
 ```go
-struct{}  // Пустая структура, не занимает памяти
-
 type User struct { // Структура с именованными полями
   Id      int64
   Name    string
@@ -46,7 +61,27 @@ type User struct { // Структура с именованными полям�
   friends []int64  // Приватный элемент
 }
 ```
+
+```go
+struct{}  // Пустая структура, не занимает памяти
+```
+
 ### Пример: https://golang.org/ref/spec#Struct_types
+
+---
+
+# Методы
+
+```go
+type Mutex struct         { /* Mutex fields */ }
+func (m *Mutex) Lock()    { /* Lock implementation */ }
+func (m *Mutex) Unlock()  { /* Unlock implementation */ }
+```
+
+```go
+m := Mutex{}
+m.Lock()
+```
 
 ---
 
@@ -184,6 +219,8 @@ unsafe.Sizeof(x) // 24!
 
 * https://github.com/dominikh/go-tools/tree/master/cmd/structlayout
 * https://en.wikipedia.org/wiki/Data_structure_alignment
+* https://dave.cheney.net/2015/10/09/padding-is-hard
+* [Линтер fieldalignment](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/fieldalignment)
 
 ---
 
@@ -267,7 +304,7 @@ jsonFieldName := ageField.Get("json")  // "user_age"
 ```
 
 ### Ссылки:
-* https://github.com/golang/go/wiki/Well-known-struct-tags
+* https://go.dev/wiki/Well-known-struct-tags
 
 ---
 
