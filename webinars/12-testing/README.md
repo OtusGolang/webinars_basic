@@ -50,10 +50,10 @@ background-image: url(../img/rules.svg)
 # Пирамида тестирования
 
 Есть разные виды тестирования:
-* Юнит-тесты (Unit-tests)
+* Юнит-тесты (Unit-tests) <- *хотим больше этого*
 * Интеграционные тесты (Integration)
 * Системные тесты (End-to-End, GUI)
-* Ручное тестирование (Manual)
+* Ручное тестирование (Manual) <- *и меньше этого*
 
 .center[<img src="img/pyramid.png" alt="Girl in a jacket" width="400" height="200">]
 

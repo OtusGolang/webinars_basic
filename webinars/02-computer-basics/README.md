@@ -171,8 +171,8 @@ background-image: url(../img/rules.svg)
 
 # Схемная реализация
 
-- https://electricalschool.info/electronica/1918-logicheskie-jelementy-i-ili-ne-i-ne-ili.html
-- https://www.youtube.com/watch?v=_5W_GZOPa8E
+- [Логические элементы и их таблицы истинности](https://electricalschool.info/electronica/1918-logicheskie-jelementy-i-ili-ne-i-ne-ili.html)
+- [Youtube: Магия транзисторов (30 min)](https://www.youtube.com/watch?v=_5W_GZOPa8E)
 
 
 ---
@@ -187,8 +187,8 @@ background-image: url(../img/rules.svg)
     ![](img/RS.png)
 ]
 
-- https://www.youtube.com/watch?v=RKgfCaxeQwU
-- https://www.youtube.com/watch?v=qohzNcRXdbg
+- [YouTube: ЧТО ТАКОЕ ТРИГГЕР В ЭЛЕКТРОНИКЕ И НЕ ТОЛЬКО, 8min](https://www.youtube.com/watch?v=RKgfCaxeQwU)
+- [YouTube: DIY Триггер на транзисторах, 10 min](https://www.youtube.com/watch?v=qohzNcRXdbg)
 
 
 ---
@@ -206,40 +206,21 @@ background-image: url(../img/rules.svg)
 
 - JK-триггер
 
-* https://digteh.ru/CVT/trigg/
+* [Виды триггеров](https://digteh.ru/CVT/trigg/)
 
 ---
 
 # Элементная база ВТ
 
-- Регистры - устройства, выполняющие функции приема, хранения, передачи и преобразования информации. Выполненняются на основе D-триггера.
+- Регистры - устройства, выполняющие функции приема, хранения, передачи и преобразования информации. Выполняются на основе D-триггера.
 
-- Счетчики – устройства, на выходах котороых получается двоичный (двоично-десятичный) код, определяемый числом поступивших импульсов. Счетчики строятся на Т-триггерах.
+- Счетчики – устройства, на выходах которых получается двоичный (двоично-десятичный) код, определяемый числом поступивших импульсов. Счетчики строятся на Т-триггерах.
 
 - Мультиплексоры – функциональные узлы, осуществляющие подключение (коммутацию) одного из нескольких входов данных к выходу. 
 
 - Шифраторы — это комбинационные устройства, преобразующии десятичные числа в двоичную систему счисления.
 
 - Дешифраторы - выполняют обратную шифраторам функцию.
-
----
-
-Демо: работа процессора
-
-* https://cpuvisualsimulator.github.io/
-
-```asm
-00: NOP
-02: LOD #22
-04: LOD 30
-06: ADD #45
-08: ADD 32
-```
-
-```asm
-30: 55
-32: 32767
-```
 
 ---
 
@@ -299,6 +280,26 @@ background-image: url(../img/rules.svg)
 .center-image.half-image[
     ![](img/processor2.jpeg)
 ]
+
+---
+
+
+Демо: работа процессора
+
+* https://cpuvisualsimulator.github.io/
+
+```asm
+00: NOP
+02: LOD #22
+04: LOD 30
+06: ADD #45
+08: ADD 32
+```
+
+```asm
+30: 55
+32: 32767
+```
 
 ---
 
@@ -383,19 +384,20 @@ https://i2hard.ru/publications/24825
 
 # Полезные ссылки
 
-- https://inf1.info/machineneumann 
-- https://intuit.ru/studies/courses/3481/723/lecture/14244?page=2
-- https://i2hard.ru/publications/24825
-- https://prog-cpp.ru/micro-interrupts/
-- https://pyatilistnik.org/difference-between-physical-cores-and-logical-processors/
+- [Принципы фон Неймана](https://inf1.info/machineneumann)
+- [Центральный процессор ЭВМ](https://intuit.ru/studies/courses/3481/723/lecture/14244?page=2)
+- [Из чего состоит центральный процессор?](https://i2hard.ru/publications/24825)
+- [Прерывания](https://prog-cpp.ru/micro-interrupts/)
+- [Различия между физическими ядрами и логическими процессорами](https://pyatilistnik.org/difference-between-physical-cores-and-logical-processors/)
 
 Научпоп:
-- https://www.youtube.com/watch?v=-z65gKETbf8
-- https://www.youtube.com/watch?v=-knefdASOz8
-- https://www.youtube.com/watch?v=k9wK2FThEsk
-- https://www.youtube.com/watch?v=Wh22_O8jXVQ
-- https://www.youtube.com/watch?v=MXoMuymbfo8
-- https://www.youtube.com/watch?v=qewavPO6jcA
+- [Veritasium. Как работает транзистор](https://www.youtube.com/watch?v=-z65gKETbf8)
+- [Как работает компьютер? Взгляд изнутри!](https://www.youtube.com/watch?v=-knefdASOz8)
+- Цикл "ОСНОВЫ ПРОГРАММИРОВАНИЯ":
+    - [КАК РАБОТАЕТ ПРОЦЕССОР](https://www.youtube.com/watch?v=k9wK2FThEsk)
+    - [КАК РАБОТАЕТ ПАМЯТЬ КОМПЬЮТЕРА](https://www.youtube.com/watch?v=Wh22_O8jXVQ)
+    - [КАК РАБОТАЕТ СТЕК](https://www.youtube.com/watch?v=MXoMuymbfo8)
+    - [КАК РАБОТАТЬ С БИТАМИ](https://www.youtube.com/watch?v=qewavPO6jcA)
 
 ---
 
